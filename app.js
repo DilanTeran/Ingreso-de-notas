@@ -7,13 +7,13 @@ sendButton.addEventListener("click", ()=>{
         if (isNaN(prevRes)){
             throw "Grasioso";
         }
-        resultado = verificarAprovacion(8,5,mensaje);
-        mensaje = definirMensaje(resultado[1]);
+        resultado = verificarAprovacion(8,5,prevRes);
+        mensaje = definirMensaje(prevRes);
     }catch(e){
         resultado = "No se puede digitar letras";
         mensaje = "He descubirto que trataste de hackear el sitio"
     }
-    abrirModal(resultado[0],mensaje);
+    abrirModal(resultado,mensaje);
 });
 
 const definirMensaje = (pr)=>{
@@ -47,9 +47,9 @@ const definirMensaje = (pr)=>{
 const verificarAprovacion = (nota1,nota2,prevRes)=>{
     promedio = (nota1 + nota2 + prevRes) / 3;
     if (promedio >= 7){
-        return ["<span class='green'>APROBADO</span>"];
+        return "<span class='green'>APROBADO</span>";
     }
-    return ["<span class='red'>DESAPROBADO</span>"];
+    return "<span class='red'>DESAPROBADO</span>";
 }
 
 const abrirModal = (res,msg)=>{
